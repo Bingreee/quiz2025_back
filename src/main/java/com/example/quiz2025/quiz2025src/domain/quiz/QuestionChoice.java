@@ -3,6 +3,7 @@ package com.example.quiz2025.quiz2025src.domain.quiz;
 import com.example.quiz2025.quiz2025src.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -28,4 +29,13 @@ public class QuestionChoice extends BaseEntity {
     private Integer choiceNumber; // 선택 번호
 
     private Boolean answerYn; // 정답 여부
+
+    @Builder
+    public QuestionChoice(Long id, QuestionDetail questionDetail, String choiceContent, Integer choiceNumber, Boolean answerYn) {
+        this.id = id;
+        this.questionDetail = questionDetail;
+        this.choiceContent = choiceContent;
+        this.choiceNumber = choiceNumber;
+        this.answerYn = answerYn;
+    }
 }

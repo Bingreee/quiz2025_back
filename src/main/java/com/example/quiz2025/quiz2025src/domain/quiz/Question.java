@@ -21,4 +21,10 @@ public class Question extends BaseEntity {
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @Builder
+    public Question(Long id, Category category) {
+        this.id = id;
+        this.category = category;
+    }
 }

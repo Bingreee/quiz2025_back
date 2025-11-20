@@ -3,6 +3,7 @@ package com.example.quiz2025.quiz2025src.domain.quiz;
 import com.example.quiz2025.quiz2025src.common.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -30,4 +31,14 @@ public class QuestionDetail extends BaseEntity {
     private Integer questionType; // 0: 객관식, 1: 주관식
 
     private Integer questionLevel; //난이도
+
+    @Builder
+    public QuestionDetail(Long id, Question question, String questionContent, String questionAnswer, Integer questionType, Integer questionLevel) {
+        this.id = id;
+        this.question = question;
+        this.questionContent = questionContent;
+        this.questionAnswer = questionAnswer;
+        this.questionType = questionType;
+        this.questionLevel = questionLevel;
+    }
 }
