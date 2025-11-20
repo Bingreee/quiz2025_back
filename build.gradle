@@ -53,6 +53,10 @@ dependencies {
 
 	/* jdbc */
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+	/*Web client*/
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+
 }
 
 tasks.named('test') {
