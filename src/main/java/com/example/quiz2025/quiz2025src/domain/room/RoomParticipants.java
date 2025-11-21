@@ -28,5 +28,14 @@ public class RoomParticipants extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user; // 사용자
 
+    @Setter
     private String endedDate; // 퇴장 일시
+
+    @Builder
+    public RoomParticipants(Long id, Room room, User user, String endedDate) {
+        this.id = id;
+        this.room = room;
+        this.user = user;
+        this.endedDate = endedDate;
+    }
 }
