@@ -12,7 +12,6 @@ import static jakarta.persistence.FetchType.LAZY;
 @Table(name = "room")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @Builder
 public class Room extends BaseEntity {
 
@@ -37,5 +36,34 @@ public class Room extends BaseEntity {
 
     private Integer roundCount; // 라운드 수
 
+    @Setter
     private String endedDate; // 종료 일시
+
+    @Builder
+    public Room(Long id, Category category, Question question, Integer maxCapacity, Integer currentPlayer, Integer roomStatus, Integer roundCount, String endedDate) {
+        this.id = id;
+        this.category = category;
+        this.question = question;
+        this.maxCapacity = maxCapacity;
+        this.currentPlayer = currentPlayer;
+        this.roomStatus = roomStatus;
+        this.roundCount = roundCount;
+        this.endedDate = endedDate;
+    }
+
+    public void changeStatus(Integer status) {
+        this.roomStatus = status;
+    }
+
+    public void increaseCurrentPlayer() {
+        this.currentPlayer = (this.currentPlayer == null ? 1 : this.currentPlayer + 1);
+    }
+
+    public void decreaseCurrentPlayer() {
+        if (this.currentPlayer != null && this.currentPlayer > 0) {
+            this.currentPlayer -= 1;
+        }
+    }
+
+
 }
